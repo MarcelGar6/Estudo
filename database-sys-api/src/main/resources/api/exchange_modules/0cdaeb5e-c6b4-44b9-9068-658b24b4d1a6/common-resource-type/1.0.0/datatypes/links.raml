@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  rel: 
+    type: string
+    description: O recurso de destino relacionado.
+  href:
+    type: string
+    description: O link do recurso
+  method:
+    enum: [ GET, POST, PUT, PATCH ]
+    description: O método HTTP

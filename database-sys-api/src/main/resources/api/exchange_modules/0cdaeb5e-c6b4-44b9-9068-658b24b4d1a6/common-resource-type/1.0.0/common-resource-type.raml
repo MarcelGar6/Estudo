@@ -1,0 +1,77 @@
+#%RAML 1.0 ResourceType
+
+uses:
+  commonLib: libraries/types.raml
+
+get?:
+  description: Get info about <<resourcePathName | !lowercamelcase>>
+  displayName: Get info about <<resourcePathName | !lowercamelcase>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<customTypeGet>>    
+post?:
+  description: Add a new <<resourcePathName | !lowercamelcase>>
+  displayName: Add new <<resourcePathName | !lowercamelcase>>
+  body:
+    application/json:
+      type: <<customTypePost>>
+  responses: 
+    202:
+      description: The request has been accepted for processing. Use the transactionId provided in the body of the response to monitor the status.
+      body:
+        application/json:
+          type: commonLib.transactionId            
+    400:
+      description: 
+      body:
+        application/json:
+          type: 
+    503:
+      body:
+        application/json:  
+          type: commonLib.customErrorMessage
+
+patch?:
+  description: Update <<resourcePathName | !singularize | !lowercamelcase>>
+  displayName: Update <<resourcePathName | !singularize | !lowercamelcase>>
+  body: 
+    application/json:
+      type: <<customTypePatch>>
+  responses: 
+    202:
+      description: The request has been accepted for processing. Use the transactionId provided in the body of the response to monitor the status.
+      body:
+        application/json:
+          type: commonLib.transactionId
+    501:
+      body:
+        application/json:
+          type: commonLib.customErrorMessage
+
+delete?:
+  description: Delete <<resourcePathName | !singularize >>
+  displayName: Delete <<resourcePathName | !singularize >>
+  body: 
+    application/json:
+      type: <<customTypeDelete>>
+  responses:
+    202:
+
+put?:
+  description: Update <<resourcePathName | !singularize | !lowercamelcase>>
+  displayName: Update <<resourcePathName | !singularize | !lowercamelcase>>
+  body: 
+    application/json:
+      type: <<customTypePut>>
+  responses: 
+    202:
+      description: The request has been accepted for processing. Use the transactionId provided in the body of the response to monitor the status.
+      body:
+        application/json:
+          type: commonLib.transactionId
+    501:
+      body:
+        application/json:
+          type: commonLib.customErrorMessage

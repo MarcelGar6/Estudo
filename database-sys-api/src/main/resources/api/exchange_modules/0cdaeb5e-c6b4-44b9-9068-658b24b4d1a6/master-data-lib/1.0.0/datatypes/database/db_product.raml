@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+type: object
+description: Produto
+properties:
+  Resultados:
+    type: array
+    items:
+      type: object
+      properties:
+        id_produto: number
+        nome_produto: string
+        valor_produto: string
+        data_compra: string
+        id_fabricante: number
+        Id?: string | nil
+  totalRecords: number
+  
+examples: !include ../../examples/database/db_product.raml

@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+type: object
+description: Alliance Application Logs
+properties:
+  items:
+    type: array
+    items:
+      type: object
+      properties:
+        applicationName?: 
+          type: string
+          enum: ["Mulesoft API", 	"Marketing Cloud API", "Referrals Admin", "	Vlocity API"]
+        className?: string
+        logDetail?: string
+        logLevel?: 
+          type: string
+          enum: ["ERROR", "FATAL", "INFO", "WARN"]
+        logType?: string
+        objectId?: string
+        objectName?: string
+
+example: !include ../../examples/general/appLog.raml

@@ -1,0 +1,20 @@
+#%RAML 1.0 Library
+usage:
+
+types:
+
+#General
+  status: !include datatypes/general/status.raml
+  statusRecursive: !include datatypes/general/statusRecursive.raml
+  scheduler: !include datatypes/general/scheduler.raml
+  upsert: !include datatypes/general/upsert.raml
+  bulkjobApi: !include datatypes/general/bulkJobApi.raml
+  appLogs: !include datatypes/general/appLog.raml
+
+#Database
+  db_product: !include datatypes/database/db_product.raml
+  db_manufacturer: !include datatypes/database/db_manufacturer.raml
+
+#Salesforce
+  sf_product: !include datatypes/salesforce/sf_product.raml
+  sf_manufacturer: !include datatypes/salesforce/sf_manufacturer.raml

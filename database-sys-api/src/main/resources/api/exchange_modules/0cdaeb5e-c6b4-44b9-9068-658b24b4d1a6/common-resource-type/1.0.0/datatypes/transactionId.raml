@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  id: 
+    type: string
+  created: 
+    type: datetime
+  externalCode?: 
+    type: string
+    description: Código externo do objeto no sistema de destino
+  status:
+    enum: [Pending, Processing, Completed, Failed]
+    description: Status da transação
+  message?:
+    type: string
+    description: Mensagem retornada pelo sistema de destino
+  links: 
+    type: array
+    items:
+      type: !include links.raml
+    description: Esta é a lista de links de dados sobre os recursos que foram gerados a partir da transação.
+example: !include ../examples/transactionId.raml

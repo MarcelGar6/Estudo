@@ -1,0 +1,57 @@
+#%RAML 1.0
+title: database-sys-api
+version: v1
+
+uses:
+  commonLib: !import /exchange_modules/0cdaeb5e-c6b4-44b9-9068-658b24b4d1a6/common-resource-type/1.0.0/libraries/types.raml
+  masterData: !import /exchange_modules/0cdaeb5e-c6b4-44b9-9068-658b24b4d1a6/master-data-lib/1.0.0/master-data-lib.raml
+    
+types:
+  #General
+  transactionId: commonLib.transactionId
+  status: masterData.status  
+
+  #Database
+  db_manufacturer: masterData.db_manufacturer
+  db_product: masterData.db_product
+
+resourceTypes:
+  commonType: !include /exchange_modules/0cdaeb5e-c6b4-44b9-9068-658b24b4d1a6/common-resource-type/1.0.0/common-resource-type.raml
+
+/sync:
+  /database:
+    /manufacturers:
+      is: [commonLib.security]
+      type:
+        commonType:
+          customTypeGet: db_manufacturer
+          customTypePost: db_manufacturer
+      get:
+      post:
+
+    /products:
+      is: [commonLib.security]
+      type:
+        commonType:
+          customTypeGet: db_product
+          customTypePost: db_product
+      get:
+      post:  
+/query:
+  is: [commonLib.security]
+  post:
+    body:
+      application/json:
+        example: {"query": "SELECT id FROM table"}
+    responses:
+      201:
+        body:
+          application/json:
+             example: {"id": 123}
+
+/status:
+  is: [commonLib.security]
+  type:
+    commonType:
+      customTypeGet: status
+  get:
